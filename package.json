@@ -1,0 +1,37 @@
+{
+  "name": "ethers-abitype",
+  "version": "1.0.0",
+  "description": "Improves ethers.js with strict ABI typing",
+  "author": "RealPeha",
+  "type": "module",
+  "scripts": {
+    "build": "npm run clean && tsc -p tsconfig.build.cjs.json && tsc -p tsconfig.build.esm.json && copyfiles -u 1 src/*.d.ts lib/types",
+    "clean": "rm -rf lib"
+  },
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/types/index.d.ts",
+  "files": [
+    "lib/*"
+  ],
+  "keywords": [],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RealPeha/ethers-abitype"
+  },
+  "bugs": {
+    "url": "https://github.com/RealPeha/ethers-abitype/issues"
+  },
+  "homepage": "https://github.com/RealPeha/ethers-abitype#readme",
+  "devDependencies": {
+    "abitype": "^0.10.3",
+    "copyfiles": "^2.4.1",
+    "ethers": "^6.9.0",
+    "typescript": "^5.3.2"
+  },
+  "peerDependencies": {
+    "abitype": "*",
+    "ethers": ">6"
+  }
+}
