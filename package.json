@@ -14,7 +14,14 @@
   "files": [
     "lib/*"
   ],
-  "keywords": [],
+  "keywords": [
+    "abi",
+    "ethereum",
+    "typescript",
+    "types",
+    "ethers",
+    "ethersjs"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -32,6 +39,12 @@
   },
   "peerDependencies": {
     "abitype": "*",
-    "ethers": ">6"
+    "ethers": ">6",
+    "typescript": ">=5.0.4"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   }
 }
