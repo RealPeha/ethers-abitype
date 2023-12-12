@@ -1,6 +1,6 @@
 {
   "name": "ethers-abitype",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Improves ethers.js with strict ABI typing",
   "author": "RealPeha",
   "type": "module",
