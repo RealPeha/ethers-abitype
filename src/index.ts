@@ -8,6 +8,7 @@ import {
   FunctionFragment,
   Result,
   TransactionResponse,
+  Overrides,
 } from "ethers";
 import {
   Abi,
@@ -67,7 +68,7 @@ export interface TypedContractFunction<
   TFragment = TypedFragment<TAbi, TFunctionName>
 > {
   // @ts-ignore
-  (...args: TInputArgs): Promise<
+  (...args: [...TInputArgs, overrides?: Overrides]): Promise<
     TFunction["stateMutability"] extends "view" | "pure"
       ? TResult
       : ContractTransactionResponse
@@ -95,8 +96,10 @@ export interface TypedContractFunction<
    *  Returns a populated transaction that can be used to perform the
    *  contract method with %%args%%.
    */
-  // @ts-ignore
-  populateTransaction(...args: TInputArgs): Promise<ContractTransaction>;
+  populateTransaction(
+    // @ts-ignore
+    ...args: [...TInputArgs, overrides?: Overrides]
+  ): Promise<ContractTransaction>;
 
   /**
    *  Call the contract method with %%args%% and return the value.
@@ -106,27 +109,31 @@ export interface TypedContractFunction<
    */
   staticCall(
     // @ts-ignore
-    ...args: TInputArgs
+    ...args: [...TInputArgs, overrides?: Overrides]
   ): Promise<TResult>;
 
   /**
    *  Send a transaction for the contract method with %%args%%.
    */
-  // @ts-ignore
-  send(...args: TInputArgs): Promise<ContractTransactionResponse>;
+  send(
+    // @ts-ignore
+    ...args: [...TInputArgs, overrides?: Overrides]
+  ): Promise<ContractTransactionResponse>;
 
   /**
    *  Estimate the gas to send the contract method with %%args%%.
    */
   // @ts-ignore
-  estimateGas(...args: TInputArgs): Promise<bigint>;
+  estimateGas(...args: [...TInputArgs, overrides?: Overrides]): Promise<bigint>;
 
   /**
    *  Call the contract method with %%args%% and return the Result
    *  without any dereferencing.
    */
-  // @ts-ignore
-  staticCallResult(...args: TInputArgs): Promise<Result>;
+  staticCallResult(
+    // @ts-ignore
+    ...args: [...TInputArgs, overrides?: Overrides]
+  ): Promise<Result>;
 }
 
 export interface TypedContractEvent<
